@@ -6,3 +6,4 @@ sqlparse==0.4.1
 
 
 #pip install -r requirements.txt
+#pip freeze > re
