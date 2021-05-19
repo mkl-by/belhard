@@ -8,5 +8,15 @@
 
     <h1>hello, на моей страничке</h1>
 
+    {{ queryset }}
+    <br><hr>
+    {% for i in queryset %}
+        <p><a href="{% url 'book_datail' book_id=i.id%}">{{i.title}}</a><br>
+            <p>{{i.text}}
+        <p><i>{{i.author}}</i>
+            <p>{{i.data_publish| date:'Y-m-d'}}
+        <hr><br><br>
+    {% endfor %}
+
 </body>
 </html>
