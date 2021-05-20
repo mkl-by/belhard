@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hotel</title>
+</head>
+<body>
+    <H2>Номера в гостинице</H2>
+    {% for room in name %}
+        <br><h2><a href="{% url 'room_feature' room_id=room.id %}"> {{ room.number_room }}</a></h2>
+    {% endfor %}
+</body>
+</html>
