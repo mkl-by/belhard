@@ -5,9 +5,39 @@
     <title>hotel</title>
 </head>
 <body>
-    <H2>Номера в гостинице</H2>
-    {% for room in name %}
-        <br><h2><a href="{% url 'room_feature' room_id=room.id %}"> {{ room.number_room }}</a></h2>
-    {% endfor %}
+
+{% if not room %}
+<H2>Номера в гостинице</H2>
+<H2>Выберите количество комнат</H2>
+        <form action="{% url 'room_feature' %}" method="post">
+            {% csrf_token %}
+            <label for="room_of_seats">Комнат</label>
+            <input type="text" placeholder="room_of_seats" name="room_of_seats" id="room_of_seats">
+            <input type="submit" value="OK">
+        </form>
+{% else %}
+        <H2>Выберите комнату</H2>
+        {% for rooom in room %}
+        <form action="{% url 'room-booking' %}" method="post">
+            {% csrf_token %}
+            <p>{{ rooom.number_room }}</p>
+            <p>{{ rooom.number_of_seats }}</p>
+            {% if rooom.occupation %}
+            <p><h3>Комната свбодна</h3></p>
+            <input type="submit" value="забронировать">
+            {% else %}
+            <p><h3>Комната занята</h3></p>
+            {% endif %}
+            {% if rooom.removed %}
+            <p><h3>Комната готова к бронированию</h3></p>
+            {% else %}
+            <p><h3>Комната не убрана</h3></p>
+            {% endif %}
+            <br>
+
+        </form>
+        {% endfor %}
+{% endif %}
+
 </body>
 </html>
