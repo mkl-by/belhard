@@ -16,15 +16,22 @@ class Book(models.Model):
         related_name='books'
     )
     data_publish = models.DateField(auto_now_add=True, db_index=True)
-    likes = models.ManyToManyField(User, related_name='liked_books')
-
-
-
-
-
+    likes = models.ManyToManyField(User, related_name='liked_books', blank=True)
 
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    text = models.TextField()
+    deta = models.DateTimeField(auto_now_add=True)
+   # on_delete = models.SET_DEFAULT, показать по дефолту юзера
+    #default = 4, дефолтное значение
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_DEFAULT,
+        default=4,
+        related_name='comment')
+    like = models.ManyToManyField(User, related_name='like_comment', blank=True)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comment')
 
 

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
 {{ user.username }}
 {% if user.is_authenticated %}
     <a href="{% url 'logout' %}">logout</a>
@@ -15,16 +17,23 @@
 <h1>hello, на моей страничке</h1>
     {{ queryset }}
     <br><hr>
-    {% for i in queryset %}
-        <p><a href="{% url 'book_datail' book_id=i.id%}">{{i.title}}</a><br>
-            <p>{{i.text}}
-        <p><i>{{i.author.username}}</i>
-            <p>{{i.data_publish| date:'Y-m-d'}}
+    {% for book in queryset %}
+        <p><a href="{% url 'book_datail' book_id=book.id%}">{{book.title}}</a><br>
+            <p>{{book.text}}
+        <p><i>{{book.author.username}}</i>
+            <p>{{book.data_publish| date:'Y-m-d'}}
             <p>
-        <a href="{% url 'book_like' book_id=i.id %}"><i> likes {{ i.count_likes }}</i></a>
+        <a href="{% url 'book_like' book_id=book.id %}"><i> likes {{ book.count_likes }}</i></a>
 
-        <hr><br><br>
-    {% endfor %}
-
+        <hr><br>
+        {% for coment in book.comment.all %}
+            <p>{{ coment.text }}</p>
+            <p>{{ coment.user.username }}</p>
+            <p>{{ coment.deta }}</p>
+            <p>{{  coment.like.count }}</p>
+        {% endfor %}
+        <br>
+{% endfor %}
+</div>
 </body>
 </html>

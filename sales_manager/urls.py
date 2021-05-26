@@ -9,4 +9,5 @@ urlpatterns = [
       path('book_like/<int:book_id>', views.add_like, name='book_like'),
       path('login/', views.LoginView.as_view(), name='login'),
       path('logout/', views.logout_view, name='logout'),
+      path('add_comment/<int:book_id>/', views.add_comment, name='add_comment'),
 ]
