@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{% extends 'sales_manager/main.html' %}
+{% block content %}
+
+
 <div class="container">
 {{ user.username }}
 {% if user.is_authenticated %}
@@ -24,7 +20,6 @@
             <p>{{book.data_publish| date:'Y-m-d'}}
             <p>
         <a href="{% url 'book_like' book_id=book.id %}"><i> likes {{ book.count_likes }}</i></a>
-
         <hr><br>
         {% for coment in book.comment.all %}
             <p>{{ coment.text }}</p>
@@ -35,5 +30,4 @@
         <br>
 {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

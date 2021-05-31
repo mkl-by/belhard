@@ -2,6 +2,7 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Room(models.Model):
@@ -34,5 +35,5 @@ class Room_feature(models.Model):
     booking_data_end = models.DateField()
 
     def __str__(self):
-        return self.room
+        return {str(self.datapublished)} if self.datapublished else ''
 

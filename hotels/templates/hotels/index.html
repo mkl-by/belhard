@@ -1,0 +1,24 @@
+{% extends 'hotels/base.html' %}
+{% block title %} Главная {% endblock %}
+{% block content %}
+<div class="row">
+    {% for hotel in hotels %}
+
+    <div class="col-sm-4" align="center">
+        <h3 align=>{{ hotel.name }}</h3>
+        <a href="#"><img src="{{ hotel.picture.url }}" class="rounded"></a>
+        <h4>{{ hotel.city }}</h4>
+            {% for i in st %}
+                {% if hotel.star >= i %}
+                    <span class="fa fa-star checked"></span>
+                {% else %}
+                    <span class="fa fa-star"></span>
+                {% endif %}
+            {% endfor %}
+     <p> </p>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

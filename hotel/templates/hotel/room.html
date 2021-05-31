@@ -3,41 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>hotel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
+<div class="container">
 {% if not room %}
 <H2>Номера в гостинице</H2>
 <H2>Выберите количество комнат</H2>
         <form action="{% url 'room_feature' %}" method="post">
             {% csrf_token %}
+            <p>
             <label for="room_of_seats">Комнат</label>
             <input type="text" placeholder="room_of_seats" name="room_of_seats" id="room_of_seats">
+            <label for="comment">Начало бронирования</label>
+            <input type="date" value="datastart" name="datastart" required>
+            <label for="comment">Конец бронирования</label>
+            <input type="date" value="dataend" name="dataend" required>
             <input type="submit" value="OK">
+            </p>
         </form>
 {% else %}
         <H2>Выберите комнату</H2>
         {% for rooom in room %}
-        <form action="{% url 'room-booking' %}" method="post">
+        <form action="{% url 'room-booking' number=103 %}" method="post">
             {% csrf_token %}
-            <p>{{ rooom.number_room }}</p>
-            <p>{{ rooom.number_of_seats }}</p>
-            {% if rooom.occupation %}
-            <p><h3>Комната свбодна</h3></p>
-            <input type="submit" value="забронировать">
-            {% else %}
-            <p><h3>Комната занята</h3></p>
-            {% endif %}
-            {% if rooom.removed %}
-            <p><h3>Комната готова к бронированию</h3></p>
-            {% else %}
-            <p><h3>Комната не убрана</h3></p>
-            {% endif %}
-            <br>
+            <p>Номер комнаты {{ rooom.room_id }}</p>
+            <p>Количество мест в комнате {{ number_of_seats }}</p>
 
+
+            <label for="comment">Пожелания комнаты</label>
+            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+
+            <br>
+        <input type="submit" value="забронировать">
         </form>
         {% endfor %}
 {% endif %}
-
+</div>
 </body>
 </html>
