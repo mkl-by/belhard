@@ -1,0 +1,20 @@
+{% extends 'hotels/base.html' %}
+{% block title %} Регистрация {% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+       <h3>Форма регистрации</h3>
+{% for field in form %}
+        <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} <br> {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+
+
+{% endfor %}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

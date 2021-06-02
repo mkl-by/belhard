@@ -3,7 +3,6 @@
 {% block content %}
 <div class="row">
     {% for hotel in hotels %}
-
     <div class="col-sm-4" align="center">
         <h3 align=>{{ hotel.name }}</h3>
         <a href="#"><img src="{{ hotel.picture.url }}" class="rounded"></a>
@@ -17,8 +16,6 @@
             {% endfor %}
      <p> </p>
     </div>
-
     {% endfor %}
-
 </div>
 {% endblock %}

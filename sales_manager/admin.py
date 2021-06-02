@@ -1,7 +1,7 @@
-from django.contrib import admin
+# from django.contrib import admin
 
 # Register your models here.
-from sales_manager.models import Book, Comment
+# from sales_manager.models import Book, Comment
 
 # class CommentAdmin(admin.StackedInline):
 #     model = Comment
@@ -16,5 +16,5 @@ from sales_manager.models import Book, Comment
 
 
 
-admin.site.register(Book)
+# admin.site.register(Book)
 

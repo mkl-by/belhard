@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sales_manager',
+    # 'sales_manager',
     'hotel',
     'debug_toolbar',
     'hotels'
