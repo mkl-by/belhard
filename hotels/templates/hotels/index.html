@@ -5,7 +5,11 @@
     {% for hotel in hotels %}
     <div class="col-sm-4" align="center">
         <h3 align=>{{ hotel.name }}</h3>
-        <a href="#"><img src="{{ hotel.picture.url }}" class="rounded"></a>
+        {% if hotel.picture.url %}
+
+        <a href="{% url 'rating' hotel_id=hotel.id name_hotel=hotel.name %}"><img src="{{ hotel.picture.url }}" class="rounded"></a>
+        {% endif %}
+
         <h4>{{ hotel.city }}</h4>
             {% for i in st %}
                 {% if hotel.star >= i %}

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     # 'sales_manager',
     'hotel',
     'debug_toolbar',
-    'hotels'
+    'hotels',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
             ],
         },
     },

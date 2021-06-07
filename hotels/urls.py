@@ -8,7 +8,12 @@ urlpatterns = [
     path('registration/', views.Registration.as_view(), name='registration'),
     path('loginuser/', views.LoginUser.as_view(), name='loginuser'),
     path('logout/', views.logout_view, name='logout'),
-    path('rating/', views.Raiting.as_view(), name='rating')
+    path('rating/<int:hotel_id>/<str:name_hotel>/', views.Raiting.as_view(), name='rating'),
+    path('rating-ajax/', views.Raiting.as_view())
+
+    # path('rating/<int:hotel_id>/<str:name_hotel>/<int:rate>/', views.Raiting1.as_view(), name='ratingone'),
+
+    # path('rating/<int:hotel_id>/<str:name_hotel>/<int:type_id>/<int:rat>/', views.Raiting1.as_view(), name='rating_one'),
     # path('booking/<number>/', views.room_booking, name='room-booking')
     # re_path(r'^(?P<number_of_seats>\d)/$', views.Room_show.as_view(), name='room_feature'),
 ]

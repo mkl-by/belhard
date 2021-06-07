@@ -5,6 +5,9 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{% block title %} Title {% endblock %}</title>
     <style>
         .checked {
@@ -16,12 +19,12 @@
 </head>
 <body>
 
-
 <div class="jumbotron text-center">
+    {% block namepage %}
     <h1>My First Hotel Page</h1>
     <p>Выберите отель для бронирования</p>
+    {% endblock %}
 </div>
-
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
@@ -29,7 +32,7 @@
             <a class="nav-link" href="{% url 'hotels_show' %}">Home</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'rating' %}">Рейтинг</a>
+            <a class="nav-link" href="#">XXXX</a>
         </li>
 
         {% if request.user.is_authenticated %}
