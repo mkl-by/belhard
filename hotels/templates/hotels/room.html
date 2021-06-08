@@ -1,0 +1,14 @@
+{% for room in rooms %}
+<div class="card"  style="width:640px">
+
+  <img class="card-img-top" src="{{ room.imgroom.url }}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Hotel: {{ name }}</h4>
+    <p class="card-text" align="left">Количество мест: {{ room.numberofseats }}</p>
+    <p class="card-text" align="left">Описание: {{ room.description }}</p>
+<!--    <a href="#" class="btn btn-primary">See Profile</a>-->
+    <hr align="center" width="500" size="3" color="#ff0000" />
+  </div>
+</div>
+
+{% endfor %}

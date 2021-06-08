@@ -2,42 +2,47 @@
 {% block title %} Главная {% endblock %}
 
 {% block namepage %}
-<h1>Rating and Root Page hotel {{ name }}  {{ hotel_id }}</h1>
+<h1>Rating and Room Page hotel {{ name }} {{ hotel_id }}</h1>
 <p>Выберите комнату для бронирования и оставте свою оценку отелю</p>
 {% endblock %}
 
 {% block content %}
 <style>
-    .star-rating{
-	font-size: 0;
-}
-.star-rating__wrap{
-	display: inline-block;
-	font-size: 1rem;
-}
-.star-rating__wrap:after{
-	content: "";
-	display: table;
-	clear: both;
-}
-.star-rating__ico{
-	float: right;
-	padding-left: 2px;
-	cursor: pointer;
-	color: #FFB300;
-}
-.star-rating__ico:last-child{
-	padding-left: 0;
-}
-.star-rating__input{
-	display: none;
-}
-.star-rating__ico:hover:before,
-.star-rating__ico:hover ~ .star-rating__ico:before,
-.star-rating__input:checked ~ .star-rating__ico:before
-{
-	content: "\f005";
-}
+    .star-rating {
+        font-size: 0;
+    }
+
+    .star-rating__wrap {
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+    .star-rating__wrap:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .star-rating__ico {
+        float: right;
+        padding-left: 2px;
+        cursor: pointer;
+        color: #FFB300;
+    }
+
+    .star-rating__ico:last-child {
+        padding-left: 0;
+    }
+
+    .star-rating__input {
+        display: none;
+    }
+
+    .star-rating__ico:hover:before,
+    .star-rating__ico:hover ~ .star-rating__ico:before,
+    .star-rating__input:checked ~ .star-rating__ico:before {
+        content: "\f005";
+    }
 </style>
 
 {% load static %}
@@ -47,31 +52,60 @@
     <thead>
     <tr>
         {% for rat in rate %}
-<form action="{% url 'rating' hotel_id=hotel_id  name_hotel=name %}" method="post">
-    {% csrf_token %}
-        <th scope="col">
-            <div class="container">
-                <ul class="list-inline">
-                    <li class="list-inline-item"><h4>{{ rat.title }}</h4></li>
-                    <li class="list-inline-item"><div class="{{ rat.id }}"><h5>{{ rat.avg_rate }}</h5></div></li>
-                    <div class="star-rating">
-                         <div class="star-rating__wrap">
-                    {% for i in '12345' %}
-                    <li class="list-inline-item">
-                        <input type="radio" class="star-rating__input" id="{{ hotel_id }}_{{ rat.title }}_{{ i }}_{{ rat.id }}" name="ratk" value="{{ i }}">
-                       <label class="star-rating__ico fa fa-star-o fa-lg" for="{{ hotel_id }}_{{ rat.title }}_{{ i }}_{{ rat.id }}" title="{{ i }} out of 5 stars"></label>
-                    </li>
-                    {% endfor %}
-                              <input type="hidden" class="tipe_id" id="{{ rat.id }}" name="tipe_id" value="{{ rat.id }}">
-                         </div>
-                    </div>
-                </ul>
-            </div>
-        </th>
-</form>
+        <form action="{% url 'rating' hotel_id=hotel_id  name_hotel=name %}" method="post">
+            {% csrf_token %}
+            <th scope="col">
+                <div class="container">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><h4>{{ rat.title }}</h4></li>
+                        <li class="list-inline-item">
+                            <div class="{{ rat.id }}"><h5>{{ rat.avg_rate }}</h5></div>
+                        </li>
+                        <div class="star-rating">
+                            <div class="star-rating__wrap">
+                                {% for i in '12345' %}
+                                <li class="list-inline-item">
+                                    <input type="radio" class="star-rating__input"
+                                           id="{{ hotel_id }}_{{ rat.title }}_{{ i }}_{{ rat.id }}" name="ratk"
+                                           value="{{ i }}">
+                                    <label class="star-rating__ico fa fa-star-o fa-lg"
+                                           for="{{ hotel_id }}_{{ rat.title }}_{{ i }}_{{ rat.id }}"
+                                           title="{{ i }} out of 5 stars"></label>
+                                </li>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </th>
+        </form>
         {% endfor %}
     </tr>
     </thead>
 </table>
+
+<div class="container" align="center">
+    <h4>Form sorting room in </h4>
+    <form action="{% url 'rating' hotel_id=hotel_id  name_hotel=name %}" method="get">
+        <div class="form-check-inline">
+        {% for s in seat %}
+
+            <label class="form-check-label" for="radio1">
+                <input type="radio" class="form-check-input" id="radio1"
+                       name="optradio" value="{{ s.numberofseats }}" checked>Seats {{ s.numberofseats }} </label>
+            {% endfor %}
+            <label class="form-check-label" for="radio1">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="" checked>Seats all
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Показать</button>
+    </form>
+    <br>
+</div>
+
+<div class="container" align="center">
+    {% include 'hotels/room.html' %}
+</div>
 {% endblock %}
 
