@@ -89,23 +89,24 @@
     <form action="{% url 'rating' hotel_id=hotel_id  name_hotel=name %}" method="get">
         <div class="form-check-inline">
         {% for s in seat %}
-
-            <label class="form-check-label" for="radio1">
-                <input type="radio" class="form-check-input" id="radio1"
-                       name="optradio" value="{{ s.numberofseats }}" checked>Seats {{ s.numberofseats }} </label>
+            <label class="form-check-label " for="radio1">
+                <input type="radio" class="form-check-input " id="radio1"
+                       name="optradio" value="{{ s.numberofseats }}" checked>   Seats {{ s.numberofseats }}  &nbsp</label>
             {% endfor %}
             <label class="form-check-label" for="radio1">
                 <input type="radio" class="form-check-input" id="radio2" name="optradio" value="" checked>Seats all
             </label>
         </div>
-
         <button type="submit" class="btn btn-primary">Показать</button>
     </form>
     <br>
 </div>
 
+
 <div class="container" align="center">
     {% include 'hotels/room.html' %}
 </div>
+
+
 {% endblock %}
 

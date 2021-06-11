@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'hotel',
     'debug_toolbar',
     'hotels',
+    'cars',
     'rest_framework',
+    'djoser'
 ]
 
 MIDDLEWARE = [
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru'
 
 DATE_FORMAT = 'Y-m-d'
 
