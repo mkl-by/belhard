@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 
 from hotels import views
+from hotels.views import HotelsListApiView, RoomsListApiView
 
 urlpatterns = [
     # path('', views.room_show),
@@ -9,7 +10,9 @@ urlpatterns = [
     path('loginuser/', views.LoginUser.as_view(), name='loginuser'),
     path('logout/', views.logout_view, name='logout'),
     path('rating/<int:hotel_id>/<str:name_hotel>/', views.Raiting.as_view(), name='rating'),
-    path('rating-ajax/', views.Raiting.as_view())
+    path('rating-ajax/', views.Raiting.as_view()),
+    path('api_hotels/', HotelsListApiView.as_view()),
+    path('api/<int:hotel_id>/', RoomsListApiView.as_view()),
 
     # path('rating/<int:hotel_id>/<str:name_hotel>/<int:rate>/', views.Raiting1.as_view(), name='ratingone'),
 

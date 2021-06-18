@@ -27,7 +27,9 @@ urlpatterns = [
     path('hotels/', include("hotels.urls")),
     path('__debug__/', include(debug_toolbar.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/', include('cars.urls'))
+    path('api/', include('cars.urls')),
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth_token/', include('djoser.urls.authtoken'))
 ]
 
 if settings.DEBUG:

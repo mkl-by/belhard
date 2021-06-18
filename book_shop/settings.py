@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     # 'sales_manager',
     'hotel',
     'debug_toolbar',
-    'hotels',
-    'cars',
     'rest_framework',
-    'djoser'
+    'rest_framework.authtoken',
+    'cars',
+    'djoser',
+    'hotels',
+
 ]
 
 MIDDLEWARE = [
