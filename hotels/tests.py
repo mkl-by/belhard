@@ -39,4 +39,3 @@ class SalesTest(TestCase):
         # вернул сервер, совпадают
         hotel = Hotels.objects.get(**data)
         self.assertEqual(response.data['id'], hotel.id)
-        print('as')
