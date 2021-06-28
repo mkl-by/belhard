@@ -31,7 +31,7 @@ class SalesTest(TestCase):
         data = {
             "name": "tests_na",
             "city": "test_city",
-            "picture": open('https://www.django-rest-framework.org/img/ordering-filter.png', 'rb')
+            "picture": open('/home/mkl/7.jpg', 'rb')
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.data)
