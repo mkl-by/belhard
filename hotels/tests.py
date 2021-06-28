@@ -25,7 +25,7 @@ class SalesTest(TestCase):
         self.user = User.objects.create_superuser('usernamee')  # создаем юзера
           # залогинили клиента под юзером
 
-    def test_create_hotel(self):
+    def test_create_hotel(self) :
         self.client.force_login(self.user)
         url = reverse('create-hotel')  # получает имя эндпоинта(урла) и возвращает урл
         data = {
@@ -39,3 +39,4 @@ class SalesTest(TestCase):
         # вернул сервер, совпадают
         hotel = Hotels.objects.get(**data)
         self.assertEqual(response.data['id'], hotel.id)
+        print('as')
