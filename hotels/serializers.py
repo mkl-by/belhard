@@ -14,7 +14,7 @@ class HotelsListserializer(ModelSerializer):
 class HotelCreateSerialiser(ModelSerializer):
     class Meta:
         model = Hotels
-        fields = ['name', 'city', 'picture']
+        fields = ['name', 'city', 'picture', 'id']
 
 class RoomListserializer(ModelSerializer):
     # достаем все записи

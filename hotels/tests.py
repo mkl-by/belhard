@@ -31,11 +31,11 @@ class SalesTest(TestCase):
         data = {
             "name": "tests_na",
             "city": "test_city",
-
+            #"picture": open('/home/mkl/7.jpg', 'rb')
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.data)
         self.assertEqual(response.data['name'], data['name'])  # проверяем, что текст который мы записали и нам \
         # вернул сервер, совпадают
-        hotel = Hotels.objects.get(**data)
+        hotel = Hotels.objects.get()
         self.assertEqual(response.data['id'], hotel.id)
